@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Posts {
+  id        String   @id @unique @default(uuid()) @db.Uuid
+  message   String
+  createdAt DateTime @default(dbgenerated("(now() AT TIME ZONE 'utc'::text)")) @db.Timestamptz(6)
+}
+
+model Users {
+  id        String   @id @unique @default(uuid()) @db.Uuid
+  userId    String   @unique
+  createdAt DateTime @default(dbgenerated("(now() AT TIME ZONE 'utc'::text)")) @db.Timestamptz(6)
+  userName  String
+}
