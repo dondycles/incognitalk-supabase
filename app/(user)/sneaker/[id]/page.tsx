@@ -2,10 +2,8 @@
 import { getUser } from "@/app/actions/getUser";
 import LoadMoreTalks from "@/components/ui/LoadMoreTalks";
 import Talk from "@/components/ui/Talk";
-import { PostsTypes } from "@/lib/types/Posts";
 import { UserTypes } from "@/lib/types/Users";
 import { Divider } from "@nextui-org/divider";
-import { Posts, Users } from "@prisma/client";
 import { useEffect, useState } from "react";
 
 export default function User({ params }: { params: { id: string } }) {
@@ -15,7 +13,6 @@ export default function User({ params }: { params: { id: string } }) {
   const fetchUser = async () => {
     const user = await getUser({ id: params.id, take: take });
     if (!user) return;
-
     setUser(user);
   };
 
@@ -39,10 +36,9 @@ export default function User({ params }: { params: { id: string } }) {
           </div>
           <div className="grid max-h-full gap-4 overflow-auto rounded-xl grid-cols-fluid scrollbar-thin scrollbar-thumb-primary">
             {user?.posts.map((post: any) => {
-              return <Talk from="profile" key={post.id} post={post}></Talk>;
+              return <Talk from="profile" key={post.id} post={post} />;
             })}
           </div>
-          {take}
           <LoadMoreTalks
             onClick={() => setTake((prev) => prev + 4)}
             from="profile"

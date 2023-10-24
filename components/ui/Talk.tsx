@@ -1,7 +1,9 @@
 "use client";
 import { PostsTypes } from "@/lib/types/Posts";
-import { Divider, Link } from "@nextui-org/react";
+import { Button, Divider, Link } from "@nextui-org/react";
 import { useUserState } from "@/lib/store";
+import { FaPen, FaTrash } from "react-icons/fa";
+import UserTalkActions from "./UserTalkActions";
 
 export default function Talk({
   post,
@@ -36,6 +38,10 @@ export default function Talk({
       <div className="flex-1 overflow-hidden">
         <p>{post.message}</p>
       </div>
+      {from === "profile" && (
+        <UserTalkActions id={post.id} message={post.message} />
+      )}
+
       {from === "talksfeed" && (
         <>
           <Divider className="mt-auto mb-0" />

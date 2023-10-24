@@ -5,9 +5,6 @@ import { getPosts } from "@/app/actions/getPosts";
 import { useEffect, useState } from "react";
 import { TalksState } from "@/lib/store";
 import { useDebouce } from "@/lib/hooks/useDebounce";
-import { Posts } from "@prisma/client";
-
-export const revalidate = 0;
 
 export default function TalksFeed({}: {}) {
   const filter = TalksState();
