@@ -8,11 +8,14 @@ export const metadata: Metadata = {
 };
 import { cookies } from "next/headers";
 
+export const dynamic = "force-dynamic";
+
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const cookieData = cookies;
   const supabase = createServerComponentClient({ cookies });
   const {
     data: { session },
