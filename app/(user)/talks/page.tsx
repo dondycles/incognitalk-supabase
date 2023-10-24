@@ -7,7 +7,7 @@ export default function Talks() {
     <div className="flex flex-col h-full gap-4 overflow-auto">
       <SearchBar />
       <TalksFeed />
-      <LoadMoreTalks />
+      <LoadMoreTalks from="talksfeed" />
     </div>
   );
 }

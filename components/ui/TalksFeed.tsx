@@ -37,7 +37,7 @@ export default function TalksFeed({}: {}) {
     <div className="grid max-h-full gap-4 overflow-auto rounded-xl grid-cols-fluid scrollbar-thin scrollbar-thumb-primary">
       {posts
         ? posts.map((post: PostsTypes) => {
-            return <Talk key={post.id} post={post} />;
+            return <Talk from="talksfeed" key={post.id} post={post} />;
           })
         : "loading..."}
     </div>
