@@ -16,7 +16,9 @@ export default function UserTalkActions({
         <FaPen />
       </Button>
       <Button
-        onClick={() => deletePost({ id: id })}
+        onClick={() => {
+          deletePost({ id: id });
+        }}
         color="danger"
         className="btn-def"
         isIconOnly

@@ -11,6 +11,7 @@ export default async function Talk({ params }: { params: { id: string } }) {
     where: { id: params.id },
     include: { user: true },
   });
+
   return (
     <>
       {session.data.session?.user ? (
