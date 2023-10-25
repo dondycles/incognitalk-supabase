@@ -2,6 +2,7 @@
 
 import prisma from "@/prisma/client";
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { FieldValues } from "react-hook-form";
 export const addPost = async (data: FieldValues) => {
@@ -22,6 +23,8 @@ export const addPost = async (data: FieldValues) => {
   } catch (error: any) {
     return { error: error.message };
   }
+
+  revalidatePath("/talks");
 
   return { success: "Post Added!" };
 };

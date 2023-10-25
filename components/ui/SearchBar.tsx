@@ -14,6 +14,7 @@ import { TalksState } from "@/lib/store";
 import { addPost } from "@/app/actions/addPost";
 export default function SearchBarAndWrite() {
   const [writing, setWriting] = useState(false);
+  const talksState = TalksState();
   const {
     register,
     reset,
@@ -26,6 +27,8 @@ export default function SearchBarAndWrite() {
     const { error, success } = await addPost(data);
 
     if (error) return console.log(error);
+
+    talksState.toggleIncrement();
 
     reset();
   };

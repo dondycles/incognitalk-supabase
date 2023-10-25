@@ -12,6 +12,7 @@ export default function User({ params }: { params: { id: string } }) {
   const [take, setTake] = useState(4);
   const fetchUser = async () => {
     const user = await getUser({ id: params.id, take: take });
+    console.log(take);
     if (!user) return;
     setUser(user);
   };

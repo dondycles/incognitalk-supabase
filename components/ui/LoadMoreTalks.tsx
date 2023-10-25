@@ -16,9 +16,18 @@ export default function LoadMoreTalks({
   return (
     <Button
       className="shrink-0 mb-0 mt-auto"
-      onClick={from ? onClick : loadMore}
+      onClick={() => {
+        switch (from) {
+          case "profile":
+            onClick!();
+            break;
+          case "talksfeed":
+            loadMore();
+            break;
+        }
+      }}
     >
-      Load More
+      Load More ({filter.take})
     </Button>
   );
 }
